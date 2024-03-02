@@ -16,6 +16,144 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    test
+    <!-- tf you doing here -->
+    <header x-data="{ 
+      links: [
+        { label: 'About me' },
+        { label: 'Skills' },
+        { label: 'Projects' }
+      ] 
+    }">
+      <nav>
+        <ul>
+          <template x-for="link in links">
+            <li x-text="link.label"></li>
+          </template>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div 
+        id="parallax-container" 
+        x-data="{
+          layers: [
+            { src: 'images/background.jpg', speed: 0.7 },
+            { src: 'images/removed-back.png', speed: 0.5 },
+            { src: 'images/removed-back-2.png', speed: 0.3 },
+            { src: 'images/removed-back-3.png', speed: 0 }
+          ] 
+        }"
+      >
+        <template x-for="(layer, index) in layers">
+          <template x-if="layer.src">
+            <img x-bind:src="layer.src" class="parallax-image" x-bind:style="'z-index:'+(index+1)" x-bind:data-speed="layer.speed" />
+          </template>
+        </template>
+        <div id="parallax-name" class="parallax-image" data-speed="0.5">
+          <div class="name">
+            Jérémy Gendre
+          </div>
+          <hr>
+          <div class="job-title">
+            Web developer
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+        <div>
+          ouais re
+        </div>
+      </div>
+    </main>
   </body>
 </html>
