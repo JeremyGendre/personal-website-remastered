@@ -1,3 +1,8 @@
+#projects h2 {
+  padding-top: 4rem;
+  z-index: 2;
+  position: relative;
+}
 #projects-container {
   display: flex;
   flex-wrap: wrap;
@@ -27,7 +32,7 @@
 
 
 .project img {
-  width: 30rem;
+  width: 20rem;
   object-fit: cover;
   transition: all 0.5s ease-in-out;
 }
@@ -94,6 +99,7 @@
 .project:hover .see-more {
   transform: translateX(0);
   opacity: 1;
+  color: var(--primary-text)
 }
 
 .project-column{
@@ -153,5 +159,19 @@
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE ====== */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .project img {
+    width: 25rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .project img {
+    width: 30rem;
   }
 }

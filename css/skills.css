@@ -35,8 +35,9 @@
 }
 
 #skills .section-content {
-  padding: 8rem 8rem;
-  padding-top:4rem;
+  width: 100%;
+  padding: 5rem 1rem;
+  padding-top: 4rem;
 }
 
 #skills.in-view .skill-item:nth-child(1) {
@@ -75,5 +76,31 @@
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE ====== */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #skills .section-content {
+    padding: 8rem 2rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #skills .section-content {
+    padding: 8rem 3rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #skills .section-content {
+    padding: 8rem 5rem;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #skills .section-content {
+    padding: 8rem 8rem;
   }
 }

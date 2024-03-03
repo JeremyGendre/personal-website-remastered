@@ -25,13 +25,14 @@ body{
   color: var(--primary-text);
   font-family: "Poppins", sans-serif;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* HEADER */
 header{
   position: sticky;
   top: 0;
-  padding: 1.5rem 4rem;
+  padding: 1.5rem 1rem;
   z-index: 100;
   transition: all 0.5s;
 }
@@ -115,7 +116,7 @@ header nav ul li:hover:after{
   background-color: var(--primary-bg);
   position: relative;
   z-index: 10;
-  padding: 8rem 0rem;
+  padding: 4rem 0rem;
   display: flex;
   flex-direction: column;
 }
@@ -130,7 +131,7 @@ header nav ul li:hover:after{
 
 section {
   position:relative;
-  padding: 8rem 8rem;
+  padding: 4rem 1rem;
   font-size: 1.5rem;
   font-weight: 200;
   transition: all 1s;
@@ -138,9 +139,15 @@ section {
 section:not(.light){
   opacity: 0;
 }
+section.light h2 {
+  opacity: 0;
+}
+section.light.in-view h2 {
+  opacity: 1;
+}
 
 section h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 200;
   margin-bottom: 4rem;
   transform: translateX(-2rem);
@@ -207,11 +214,11 @@ section:not(.light).in-view {
 }
 
 .shape-divider-2{
-  background-color: var(--primary-text);
+  /* background-color: var(--primary-text); */
   position: absolute;
   width: 100%;
   overflow: hidden;
-  line-height: 0;
+  line-height:0;
 } 
 /* end shade divider */
 
@@ -320,3 +327,31 @@ footer a:hover {
 /* end footer */
 
    
+/* ===== RESPONSIVE ====== */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  section {
+    padding: 4rem 2rem;
+  }
+  header.scrolled{
+    padding: 1.5rem 2rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  section {
+    padding: 5rem 3rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  section {
+    padding: 6rem 4rem;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  section {
+    padding: 8rem 8rem;
+  }
+}

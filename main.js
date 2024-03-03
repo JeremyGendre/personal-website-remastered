@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.parallax-image');
   const hr = document.querySelector('#parallax-name hr');
   const sections = document.querySelectorAll('section');
+  const header = document.querySelector('header');
   const navLinks = document.querySelectorAll('nav ul li');
 
   document.addEventListener('scroll', function() {
     const scroll = window.scrollY;
-    const header = document.querySelector('header');
     const windowHeight = window.innerHeight;
     if (scroll > windowHeight / 1.3) {
       header.classList.add('scrolled');
