@@ -1,0 +1,86 @@
+#parallax-container {
+  overflow: hidden;
+  margin-top: -5rem;
+  height: 120vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-image {
+  height: 120vh;
+  position: absolute;
+}
+
+#parallax-name {
+  height: 110vh;
+  top:0;
+  color: var(--secondary-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  word-break: break-all;
+}
+
+#parallax-name .name {
+  font-weight: 800;
+  font-size: 5rem;
+  opacity: 0;
+  transform: translateY(-2rem);
+  animation: name 4s 0.5s forwards;
+  background: rgb(97,54,82);
+  background: linear-gradient(171deg, rgba(97,54,82,1) 0%, rgba(199,53,89,1) 100%);
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#parallax-name hr {
+  margin: 1rem 0;
+  border: 1px solid var(--secondary-text);
+  opacity: 0;
+  animation: hr 2s 2s forwards;
+}
+
+#parallax-name .job-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: jobtitle 2s 1.5s forwards;
+}
+@keyframes jobtitle {
+  0% {
+    opacity: 0;
+    letter-spacing: normal;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 1rem;
+  }
+}
+
+@keyframes name {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hr {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 30%;
+  }
+}

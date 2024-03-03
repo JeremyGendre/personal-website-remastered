@@ -11,7 +11,11 @@
     <link rel="apple-touch-icon" href="images/logo.PNG" />
     <link rel="manifest" href="manifest.json" />
     <title>Gendre Jérémy</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/parallax.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/skills.css" />
+    <link rel="stylesheet" href="css/projects.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </head>
@@ -19,16 +23,23 @@
     <!-- tf you doing here -->
     <header x-data="{ 
       links: [
-        { label: 'About me' },
-        { label: 'Skills' },
-        { label: 'Projects' }
+        { label: 'About me', href: '#about' },
+        { label: 'Skills', href: '#skills'},
+        { label: 'Projects', href: '#projects'}
       ] 
     }">
       <nav>
-        <ul>
+        <ul id="links-container">
           <template x-for="link in links">
-            <li x-text="link.label"></li>
+            <li x-bind:data-href="link.href" x-text="link.label">
+            </li>
           </template>
+        </ul>
+      </nav>
+      <!-- to keep the header height when ul is going absolute -->
+      <nav id="hidden-nav">
+        <ul>
+          <li>.</li>
         </ul>
       </nav>
     </header>
@@ -37,22 +48,22 @@
         id="parallax-container" 
         x-data="{
           layers: [
-            { src: 'images/background.jpg', speed: 0.7 },
-            { src: 'images/removed-back.png', speed: 0.5 },
-            { src: 'images/removed-back-2.png', speed: 0.3 },
-            { src: 'images/removed-back-3.png', speed: 0 }
+            { src: 'background.jpg', speed: 0.7 },
+            { src: 'removed-back.png', speed: 0.5 },
+            { src: 'removed-back-2.png', speed: 0.3 },
+            { src: 'removed-back-3.png', speed: 0 }
           ] 
         }"
       >
         <template x-for="(layer, index) in layers">
           <template x-if="layer.src">
-            <img x-bind:src="layer.src" class="parallax-image" x-bind:style="'z-index:'+(index+1)" x-bind:data-speed="layer.speed" />
+            <img x-bind:src="`images/${layer.src}`" class="parallax-image" x-bind:style="'z-index:'+(index+1)" x-bind:data-speed="layer.speed" />
           </template>
         </template>
         <div id="parallax-name" class="parallax-image" data-speed="0.5">
-          <div class="name">
+          <h1 class="name">
             Jérémy Gendre
-          </div>
+          </h1>
           <hr>
           <div class="job-title">
             Web developer
@@ -60,100 +71,125 @@
         </div>
       </div>
       <div id="content">
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
-        <div>
-          ouais re
-        </div>
+        <section id="about">
+          <h2>
+            About <span>me</span>
+          </h2>
+          <div id="about-container">
+            <div class="description">
+              <p>
+                Passionate about web technologies, I studied and get a master's degre in web development. I am always looking for new challenges and projects to work on. I am also a big fan of video games and Star Wars saga (all geek's cliche, right ?).
+                <br><br>I am currently working at <a href="https://www.atipik.ch/en" target="_blank" rel="noopener noreferrer">Atipik</a> as a web developer. I have the opportunity to work on various projects and to use different technologies within a amazing team !
+              </p>
+              <div class="img">
+                <img src="images/me.jpg" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="skills" x-data="{
+          technologies: [
+            { name: 'VueJS', image: 'vuejs.png' },
+            { name: 'ReactJS', image: 'react.png' },
+            { name: 'TypeScript', image: 'typescript.png' },
+            { name: 'NestJS', image: 'nestjs.svg' },
+            { name: 'Tailwind', image: 'tailwindcss.svg' },
+            { name: 'PHP', image: 'php.png' },
+            { name: 'Symfony', image: 'symfony.png' },
+          ]
+        }" class="light">
+          <div class="shape-divider-1">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: calc(130% + 1.3px); height: 69px;"><path data-v-6da3ec0c="" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path></svg>
+          </div>
+          <div class="section-content">
+            <h2>About my <span>Skills</span></h2>
+            <div id="skills-container">
+              <template x-for="(tech, index) in technologies">
+                <div class="skill-item">
+                  <img x-bind:src="`images/skills/${tech.image}`" class="skill-image" />
+                  <div x-text="tech.name"></div>
+                </div>
+              </template>
+            </div>
+          </div>
+          <div class="shape-divider-2">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: calc(221% + 1.3px); height: 76px;"><path data-v-6da3ec0c="" d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path></svg>
+          </div>
+        </section>
+        <section id="projects" x-data="{
+          projects: [
+            { label: 'Internal ticketing app for Gerofinance', image: 'gerofinance.png', link: 'https://www.gerofinance.ch/' },
+            { label: 'Daily scrum meeting app for Atipik', image: 'atipik-site.png', link: 'https://www.atipik.ch/en'},
+            { label: 'Light BPMN engine', image: 'bpmn.png', link: 'https://github.com/JeremyGendre/bpmn-engine' },
+            { label: 'Absence management application', image: 'abs_mngt.JPG' },
+            { label: 'Internal ERP', image: 'media-sante.JPG', link: 'https://www.media-sante.com/'},
+            { label: 'App for Rope Up', image: 'ropeup-api.png', link: 'https://ropeup.fr/' },
+            { label: 'Song playlist app', image: 'playlistsong.JPG', link: 'https://github.com/JeremyGendre/vue-song-playlist' },
+            { label: 'Game using Unity', image: 'unity-game.JPG', link: 'https://unity.com/' },
+          ]
+        }">
+          <h2>About my <span>Projects</span></h2>
+          <div id="projects-container">
+            <div class="project-column project-column-1">
+              <template x-for="project in projects.slice(0, Math.ceil(projects.length / 2))">
+                <a class="project" x-bind:href="project.link" target="_blank" rel="noopener noreferrer">
+                  <img x-bind:src="`images/projects/${project.image}`" />
+                  <span class="project-label">
+                    <span x-text="project.label"></span>
+                  </span>
+                  <span x-show="project.link" class="see-more">
+                    See more
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"></path></svg>
+                  </span>
+                </a>
+              </template>
+            </div>
+            <div class="project-column project-column-2">
+              <template x-for="project in projects.slice(Math.ceil(projects.length / 2))">
+                <a class="project" x-bind:href="project.link" target="_blank" rel="noopener noreferrer">
+                  <img x-bind:src="`images/projects/${project.image}`" />
+                  <span class="project-label">
+                    <span x-text="project.label"></span>
+                  </span>
+                  <span x-show="project.link" class="see-more">
+                    See more
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"></path></svg>
+                  </span>
+                </a>
+              </template>
+            </div>
+          </div>
+          <div style="display:flex;justify-content: center;margin-top:4rem;">
+            <a href="https://github.com/JeremyGendre" class="btn" target="_blank" rel="noopener noreferrer">
+              <span class="btn-sub">
+                <span class="btn-sub-2">Discover more</span>
+              </span>
+            </a>
+          </div>
+        </section>
       </div>
     </main>
+    <footer>
+      <div x-data="{ date: new Date() }">
+        ©Jérémy Gendre <span x-text="date.getFullYear()"></span>
+      </div>
+      <div class="links">
+        <a href="https://www.facebook.com/jeremy.gendre.7" rel="noopener noreferrer" target="_blank">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/j%C3%A9r%C3%A9my-gendre-a06772133/" rel="noopener noreferrer" target="_blank">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+        </a>
+        <a href="https://github.com/JeremyGendre" rel="noopener noreferrer" target="_blank">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+        </a>
+        <a href="mailto:gendrejeremy@yahoo.fr" rel="noopener noreferrer" target="_blank">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 1.95c-5.52 0-10 4.48-10 10s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"></path></svg>
+        </a>
+        <a href="docs/CV - Jérémy Gendre 2022.pdf" rel="noopener noreferrer" target="_blank">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm-96 144c0 4.42-3.58 8-8 8h-8c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h8c4.42 0 8 3.58 8 8v16c0 4.42-3.58 8-8 8h-8c-26.51 0-48-21.49-48-48v-32c0-26.51 21.49-48 48-48h8c4.42 0 8 3.58 8 8v16zm44.27 104H160c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h12.27c5.95 0 10.41-3.5 10.41-6.62 0-1.3-.75-2.66-2.12-3.84l-21.89-18.77c-8.47-7.22-13.33-17.48-13.33-28.14 0-21.3 19.02-38.62 42.41-38.62H200c4.42 0 8 3.58 8 8v16c0 4.42-3.58 8-8 8h-12.27c-5.95 0-10.41 3.5-10.41 6.62 0 1.3.75 2.66 2.12 3.84l21.89 18.77c8.47 7.22 13.33 17.48 13.33 28.14.01 21.29-19 38.62-42.39 38.62zM256 264v20.8c0 20.27 5.7 40.17 16 56.88 10.3-16.7 16-36.61 16-56.88V264c0-4.42 3.58-8 8-8h16c4.42 0 8 3.58 8 8v20.8c0 35.48-12.88 68.89-36.28 94.09-3.02 3.25-7.27 5.11-11.72 5.11s-8.7-1.86-11.72-5.11c-23.4-25.2-36.28-58.61-36.28-94.09V264c0-4.42 3.58-8 8-8h16c4.42 0 8 3.58 8 8zm121-159L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg>
+        </a>
+      </div>
+    </footer>
   </body>
 </html>

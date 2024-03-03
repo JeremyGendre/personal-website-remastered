@@ -1,0 +1,66 @@
+
+#about-container .description p {
+  transform: translateX(-2rem);
+  transition: all 1s ease-in-out;
+}
+
+#about.in-view .description p {
+  transform: translateX(0);
+}
+
+#about-container .description {
+  display:flex;
+  justify-content: space-between;
+  place-items: center;
+  gap: 5rem;
+}
+
+#about-container .description .img {
+  min-width: 20rem;
+  min-height: 20rem;
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  transform: translateY(2rem);
+  opacity: 0;
+}
+
+#about.in-view .description .img {
+  animation: profile-img 1.5s 0.5s ease-in-out forwards;
+}
+
+#about-container .description .img:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#about-container .description .img:hover img {
+  transform: scale(1.1);
+}
+
+#about-container .description .img img {
+  height:20rem;
+  transition: all 0.3s ease-in-out;
+}
+
+
+@keyframes profile-img {
+  0% {
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  50% {
+    border-radius: 20px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    border-radius: 50%;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
