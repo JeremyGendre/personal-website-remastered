@@ -67,11 +67,13 @@ document.addEventListener('DOMContentLoaded', function() {
   hamburger.addEventListener('click', function() {
     smallScreensNav.classList.toggle('show');
     smallScreensNav.classList.toggle('hide');
+    hamburger.classList.toggle('close');
   });
   smallScreensLinks.forEach(link => {
     link.addEventListener('click', function() {
       smallScreensNav.classList.toggle('show');
       smallScreensNav.classList.toggle('hide');
+      hamburger.classList.toggle('close');
     });
   });
 });

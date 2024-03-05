@@ -64,6 +64,15 @@ header .nav-small-screens.show li:last-child {
   outline: none;
   border: none;
 }
+.hamburger-menu.close #hamburger-menu-line-1 {
+  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+}
+.hamburger-menu.close #hamburger-menu-line-2 {
+  opacity: 0;
+}
+.hamburger-menu.close #hamburger-menu-line-3 {
+  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+}
 .hamburger-sub-container {
   position: relative;
   display: flex;
@@ -86,9 +95,6 @@ header.scrolled .hamburger-menu:before {
   position: fixed;
   top:0;
   left:0;
-}
-header.scrolled .hamburger-menu-line {
-  background-color: lightgray;
 }
 
 /* ===== RESPONSIVE ====== */
