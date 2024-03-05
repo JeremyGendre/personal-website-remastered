@@ -1,3 +1,6 @@
+#projects {
+  overflow-x: hidden;
+}
 #projects h2 {
   padding-top: 4rem;
   z-index: 2;

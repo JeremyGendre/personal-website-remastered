@@ -12,6 +12,7 @@
     <link rel="manifest" href="manifest.json" />
     <title>Gendre Jérémy</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/parallax.css" />
     <link rel="stylesheet" href="css/about.css" />
     <link rel="stylesheet" href="css/skills.css" />
@@ -28,20 +29,33 @@
         { label: 'Projects', href: '#projects'}
       ] 
     }">
-      <nav>
+      <nav class="nav-large-screens">
         <ul id="links-container">
           <template x-for="link in links">
-            <li x-bind:data-href="link.href" x-text="link.label">
-            </li>
+            <li x-bind:data-href="link.href" x-text="link.label"></li>
           </template>
         </ul>
       </nav>
       <!-- to keep the header height when ul is going absolute -->
-      <nav id="hidden-nav">
+      <nav id="hidden-nav" class="nav-large-screens">
         <ul>
           <li>.</li>
         </ul>
       </nav>
+      <nav class="nav-small-screens hide">
+        <ul>
+          <template x-for="link in links">
+            <li x-bind:data-href="link.href" x-text="link.label"></li>
+          </template>
+        </ul>
+      </nav>
+      <button class="hamburger-menu">
+        <div class="hamburger-sub-container">
+          <div class="hamburger-menu-line"></div>
+          <div class="hamburger-menu-line"></div>
+          <div class="hamburger-menu-line"></div>
+        </div>
+      </button>
     </header>
     <main>
       <div 

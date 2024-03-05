@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('section');
   const header = document.querySelector('header');
   const navLinks = document.querySelectorAll('nav ul li');
+  const hamburger = document.querySelector('button.hamburger-menu');
+  const smallScreensLinks = document.querySelectorAll('nav.nav-small-screens ul li');
+  const smallScreensNav = document.querySelector('nav.nav-small-screens');
 
   document.addEventListener('scroll', function() {
     const scroll = window.scrollY;
@@ -58,6 +61,17 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const section = link.dataset.href;
       scrollToSection(section);
+    });
+  });
+
+  hamburger.addEventListener('click', function() {
+    smallScreensNav.classList.toggle('show');
+    smallScreensNav.classList.toggle('hide');
+  });
+  smallScreensLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      smallScreensNav.classList.toggle('show');
+      smallScreensNav.classList.toggle('hide');
     });
   });
 });
